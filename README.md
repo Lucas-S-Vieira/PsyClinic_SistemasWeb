@@ -38,3 +38,8 @@
   4.  Visualização da Lista de Consultas.
 
   Os desenhos das telas podem ser encontrados em: [FIGMA](https://www.figma.com/files/team/1303100830464857999/project/118516411/Team-project?fuid=918628922032204296)
+[Tela de login](https://www.figma.com/make/bbaI6g6S3pZuB7ULoPGVjl/Tela-de-Login?t=610Q6GZ080OvZJ7O-20&fullscreen=1)
+[Cadastro de paciente](https://www.figma.com/make/HDCjN6pLqgKIfzUg2SEeSM/UI-para-novo-paciente?t=7psS4XNXTmSnBefl-20&fullscreen=1)
+[Cadastro de psicologo](https://www.figma.com/make/K0UrAkqtEuNqE3PPPTM03M/Cadastro-de-novo-psicologo?t=0wxxZXbDv5li1s5U-20&fullscreen=1)
+[Agendamento de sessão](https://www.figma.com/make/cDPV7QUjxBbJhVsftJzkpi/Tela-de-agendamento?node-id=0-1&p=f&t=HINUnW6WEJr4EUGK-0&fullscreen=1)
+[Visualização de agenda](https://www.figma.com/make/4ZRhVWNSZDvxfZd7dbfUoW/Visualiza%C3%A7%C3%A3o-de-agendamentos?t=YKl4gK9NAINoVpuk-20&fullscreen=1)
