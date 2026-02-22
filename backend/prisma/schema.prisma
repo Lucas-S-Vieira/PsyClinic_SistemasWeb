@@ -2,8 +2,7 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -37,7 +36,7 @@ model Patient {
 
 model Appointment{
   id Int @id @default(autoincrement())
-  data DateTime
+  date DateTime
 
   // Paciente
   patient_id Int

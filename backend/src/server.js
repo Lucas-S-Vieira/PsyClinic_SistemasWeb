@@ -3,6 +3,9 @@ import cors from "cors"
 
 // Routes - import
 import { mainRouter } from "./routes/main.js";
+import { patientsRouter } from "./routes/patient.js";
+import { psychologistsRouter } from "./routes/psychologist.js";
+import { appointmentsRouter } from "./routes/appointment.js";
 
 // Configurações (.env)
 const PORT = 5000
@@ -16,6 +19,9 @@ server.use(cors())
 
 // Add Routes to server
 server.use(mainRouter)
+server.use("/api/patients", patientsRouter);
+server.use("/api/psychologists", psychologistsRouter);
+server.use("/api/appointments", appointmentsRouter);
 
 // Start - listen
 server.listen(PORT, () => {

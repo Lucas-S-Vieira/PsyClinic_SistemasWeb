@@ -1,0 +1,87 @@
+### Variáveis Globais
+@baseUrl = http://localhost:5000
+
+############################################################
+# STATUS E ADMIN (main.js)
+############################################################
+
+### Verificar Status do Servidor
+GET {{baseUrl}}/status
+
+### Acesso Admin (Deve retornar 401)
+GET {{baseUrl}}/admin
+
+---
+
+############################################################
+# PACIENTES (patients.js)
+############################################################
+
+### Criar novo Paciente
+# @name createPatient
+POST {{baseUrl}}/patients
+Content-Type: application/json
+
+{
+    "name": "Lucas Salgado Vieira"
+}
+
+### Listar todos os Pacientes (trazendo consultas e psicólogos)
+GET {{baseUrl}}/patients
+
+### Buscar Paciente por ID
+GET {{baseUrl}}/patients/1
+
+### Buscar Paciente por Nome
+GET {{baseUrl}}/patients/name/Lucas
+
+---
+
+############################################################
+# PSICÓLOGOS (psychologists.js)
+############################################################
+
+### Criar novo Psicólogo
+POST {{baseUrl}}/psychologists
+Content-Type: application/json
+
+{
+    "name": "Dr. Sigmund Freud"
+}
+
+### Listar todos os Psicólogos (trazendo consultas e pacientes)
+GET {{baseUrl}}/psychologists
+
+---
+
+############################################################
+# AGENDAMENTOS (appointments.js)
+############################################################
+
+### Criar um Agendamento
+# Nota: Use IDs que já existem no seu banco SQLite
+POST {{baseUrl}}/appointments
+Content-Type: application/json
+
+{
+    "date": "2026-03-15T10:00:00Z",
+    "psychologist_id": 1,
+    "patient_id": 1
+}
+
+### Listar todos os Agendamentos
+GET {{baseUrl}}/appointments
+
+### Buscar Consultas de um Paciente Específico
+GET {{baseUrl}}/appointments/patient/1
+
+### Buscar Consultas de um Psicólogo Específico
+GET {{baseUrl}}/appointments/psychologist/1
+
+### Deletar um Agendamento
+DELETE {{baseUrl}}/appointments
+Content-Type: application/json
+
+{
+    "id": 1
+}
