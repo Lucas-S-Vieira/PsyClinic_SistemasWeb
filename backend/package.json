@@ -1,0 +1,12 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "NodeJs Server",
+  "license": "MIT",
+  "author": "Lucas Salgado Vieira <lucas.sv@aluno.edu.ufop.br>",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
