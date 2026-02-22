@@ -4,8 +4,12 @@
   "description": "NodeJs Server",
   "main": "server.js",
   "scripts": {
+    "dev": "nodemon ./src/server.js",
+    "studio": "npx prisma studio",
+    "migrate": "npx prisma migrate dev",
+    "generate": "npx prisma generate",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./src/server.js"
+    "start": "node ./src/server.js"
   },
   "author": "Lucas Salgado Vieira <lucas.sv@aluno.edu.ufop.br>",
   "license": "MIT",
