@@ -10,3 +10,45 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
+model Psychologist{
+  id Int @id @default(autoincrement())
+  name String
+
+  appointments Appointment[]
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  
+  @@map("tb_psychologists")
+}
+
+model Patient {
+  id Int @id @default(autoincrement())
+  name String
+
+  appointments Appointment[]
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("tb_patients")
+}
+
+model Appointment{
+  id Int @id @default(autoincrement())
+  data DateTime
+
+  // Paciente
+  patient_id Int
+  patient Patient @relation(fields: [patient_id], references: [id])
+
+  // Psicologo
+  psychologist_id Int
+  psychologist Psychologist @relation(fields: [psychologist_id], references: [id])
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("tb_appointments")
+}
