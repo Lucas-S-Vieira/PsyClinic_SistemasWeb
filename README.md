@@ -39,12 +39,14 @@ O **PsyClinic** é um sistema web desenvolvido para simplificar o gerenciamento 
 * Executar `npm run migrate` para criar as tabelas e regras de cascata.
 * Iniciar com `npm run dev` para executar com nodemon.
 * Iniciar com `npm start` para executar normalmente sem nodemon.
+* O backend ficará disponível da seguinte forma `http://localhost:5000/api`.
 
 
 2. **Frontend**:
 * Navegar até a pasta do frontend.
 * Executar `npm install`.
 * Iniciar a aplicação com `npm run dev`.
+* O frontend ficará disponível da seguinte forma `http://localhost:5173/`
 
 
 
