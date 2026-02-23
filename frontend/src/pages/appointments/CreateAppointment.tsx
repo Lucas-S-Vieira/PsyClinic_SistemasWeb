@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { AxiosError } from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import api from '../../services/api';
 // Importando as interfaces para remover o 'any'
 import type { PsychologistInterface } from '../../types/psychologist';
@@ -9,14 +9,15 @@ import { CalendarPlus, ArrowLeft, Save } from 'lucide-react';
 
 export default function CreateAppointment() {
   const navigate = useNavigate();
+  const location = useLocation();
   
   // Tipando os estados com as suas interfaces
   const [psychologists, setPsychologists] = useState<PsychologistInterface[]>([]);
   const [patients, setPatients] = useState<PatientInterface[]>([]);
   
   const [formData, setFormData] = useState({
-    psychologist_id: '',
-    patient_id: '',
+    psychologist_id: location.state?.psychologist_id || '',
+    patient_id: location.state?.patient_id || '',
     date: '',
     time: ''
   });

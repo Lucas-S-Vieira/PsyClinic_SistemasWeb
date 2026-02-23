@@ -64,7 +64,9 @@ export default function ListPatients() {
               <h3 className="font-semibold text-gray-800 text-lg leading-tight mb-1">{p.name}</h3>
               <span className="text-xs text-gray-400 font-mono">ID: {p.id}</span>
             </div>
-            <button className="w-full flex justify-center items-center gap-2 bg-gray-50 hover:bg-emerald-50 text-gray-600 hover:text-emerald-600 border border-gray-200 py-2.5 rounded-lg transition-colors text-sm font-medium mt-auto">
+            <button 
+            onClick={() => navigate('/appointments/create', { state: { patient_id: p.id } })}
+            className="w-full flex justify-center items-center gap-2 bg-gray-50 hover:bg-emerald-50 text-gray-600 hover:text-emerald-600 border border-gray-200 py-2.5 rounded-lg transition-colors text-sm font-medium mt-auto">
               <CalendarPlus size={18} /> Agendar
             </button>
           </div>
