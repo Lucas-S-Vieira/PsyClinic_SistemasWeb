@@ -87,7 +87,16 @@ async getByPatient(request, response) {
     const { date, psychologist_id, patient_id } = request.body;
 
     try {
+    
+    const now = new Date();
+      const appointmentDate = new Date(date);
 
+      if (appointmentDate < now) {
+        return response.status(400).json({
+          message: "Não é possível agendar consultas em datas ou horários que já passaram."
+        });
+      }
+      
     const psychologist = await prisma.psychologist.findUnique({
         where: { id: parseInt(psychologist_id) }
       });
@@ -149,6 +158,15 @@ async getByPatient(request, response) {
 
     try {
 
+    const now = new Date();
+      const appointmentDate = new Date(date);
+
+      if (appointmentDate < now) {
+        return response.status(400).json({
+          message: "Não é possível agendar consultas em datas ou horários que já passaram."
+        });
+      }
+
     const psychologist = await prisma.psychologist.findUnique({
         where: { id: parseInt(psychologist_id) }
       });
@@ -164,7 +182,7 @@ async getByPatient(request, response) {
       if (!patient) {
         return response.status(404).json({ message: "Paciente não encontrado." });
       }
-      
+
     const checkConflict = await prisma.appointment.findFirst({
         where: {
           psychologist_id: parseInt(psychologist_id),

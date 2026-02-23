@@ -4,6 +4,7 @@
 
 // import express from "express" // default
 import { Router } from "express"
+import { prisma } from "../repository/client.js";
 
 const mainRouter = Router()
 
@@ -21,5 +22,23 @@ mainRouter.get('/status', (request, response) => {
 mainRouter.get('/admin', (request, response) => {
     response.status(401).send("<h1>Unauthorized.</h1>")
 })
+
+mainRouter.get('/api/stats', async (request, response) => {
+    try {
+        const [totalPsychologists, totalPatients, totalAppointments] = await Promise.all([
+            prisma.psychologist.count(),
+            prisma.patient.count(),
+            prisma.appointment.count()
+        ]);
+
+        response.json({
+            psychologists: totalPsychologists,
+            patients: totalPatients,
+            appointments: totalAppointments
+        });
+    } catch (error) {
+        response.status(500).json({ message: "Erro ao buscar estatísticas." });
+    }
+});
 
 export { mainRouter }

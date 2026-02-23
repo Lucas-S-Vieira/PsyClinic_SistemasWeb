@@ -21,6 +21,8 @@ O **PsyClinic** é um sistema web desenvolvido para simplificar o gerenciamento 
 * **Exclusão em Cascata (Cascade Delete)**: Configuração no banco de dados via Prisma para que, ao excluir um psicólogo ou paciente, suas respectivas consultas sejam removidas automaticamente, mantendo a integridade referencial.
 * **Identidade Visual e Favicon**: Implementação de um ícone personalizado para a aplicação e integração de logo clicável no menu para retorno à página inicial.
 * **Botão de agendar dentro do card**: Implementação de agenda de consultas diretamente do psicólogo ou do paciente.
+* **Dashboard da tela inicial**: Foi implementado um dashboard na tela inicial, que mostra quantos pacientes existem, quantos psicólogos existem e quantas consultas existem no sistema.
+* **Limitação de data**: Evitar que sejam marcadas sessões para datas no passado.
 
 ### 4. Principais desafios e dificuldades
 
