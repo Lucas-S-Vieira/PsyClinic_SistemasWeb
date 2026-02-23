@@ -12,7 +12,7 @@ appointmentsRouter.get('/psychologist/:id', (request, response) => appointmentCo
 
 // Rotas de Escrita (POST, PUT, DELETE)
 appointmentsRouter.post('/', (request, response) => appointmentController.create(request, response));
-appointmentsRouter.put('/', (request, response) => appointmentController.update(request, response));
-appointmentsRouter.delete('/', (request, response) => appointmentController.delete(request, response));
+appointmentsRouter.put('/:id', (request, response) => appointmentController.update(request, response));
+appointmentsRouter.delete('/:id', (request, response) => appointmentController.delete(request, response));
 
 export { appointmentsRouter };

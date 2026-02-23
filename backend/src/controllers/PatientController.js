@@ -90,7 +90,8 @@ export default class PatientController {
   }
 
   async update(request, response) {
-    const { id, name } = request.body;
+    const { id } = request.params;
+    const { name } = request.body;
 
     try {
       const patient = await prisma.patient.update({
@@ -114,7 +115,7 @@ export default class PatientController {
   }
 
   async delete(request, response) {
-    const { id } = request.body;
+    const { id } = request.params;
 
     try {
       const patient = await prisma.patient.delete({

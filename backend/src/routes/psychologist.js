@@ -11,7 +11,7 @@ psychologistsRouter.get('/name/:name', (request, response) => psychologistContro
 
 // Rotas de Escrita (POST, PUT, DELETE)
 psychologistsRouter.post('/', (request, response) => psychologistController.create(request, response));
-psychologistsRouter.put('/', (request, response) => psychologistController.update(request, response));
-psychologistsRouter.delete('/', (request, response) => psychologistController.delete(request, response));
+psychologistsRouter.put('/:id', (request, response) => psychologistController.update(request, response));
+psychologistsRouter.delete('/:id', (request, response) => psychologistController.delete(request, response));
 
 export { psychologistsRouter };

@@ -86,11 +86,37 @@ async getByPatient(request, response) {
   async create(request, response) {
     const { date, psychologist_id, patient_id } = request.body;
 
-    // Is patient_id valid?
-    // Is psychologist_id valid?
-    // Model -> validate()
-
     try {
+
+    const psychologist = await prisma.psychologist.findUnique({
+        where: { id: parseInt(psychologist_id) }
+      });
+
+      if (!psychologist) {
+        return response.status(404).json({ message: "Psicólogo não encontrado." });
+      }
+
+      const patient = await prisma.patient.findUnique({
+        where: { id: parseInt(patient_id) }
+      });
+
+      if (!patient) {
+        return response.status(404).json({ message: "Paciente não encontrado." });
+      }
+
+    const checkConflict = await prisma.appointment.findFirst({
+        where: {
+          psychologist_id: parseInt(psychologist_id),
+          date: new Date(date)
+        }
+      });
+
+      if (checkConflict) {
+        return response.status(400).json({
+          message: "Conflito de agenda: Este psicólogo já possui uma consulta marcada para este horário."
+        });
+      }
+
       const appointment = await prisma.appointment.create({
         data: {
           date: new Date(date),
@@ -118,9 +144,43 @@ async getByPatient(request, response) {
   }
 
   async update(request, response) {
-    const { id, date, psychologist_id, patient_id } = request.body;
+    const { id } = request.params;
+    const { date, psychologist_id, patient_id } = request.body;
 
     try {
+
+    const psychologist = await prisma.psychologist.findUnique({
+        where: { id: parseInt(psychologist_id) }
+      });
+
+      if (!psychologist) {
+        return response.status(404).json({ message: "Psicólogo não encontrado." });
+      }
+
+      const patient = await prisma.patient.findUnique({
+        where: { id: parseInt(patient_id) }
+      });
+
+      if (!patient) {
+        return response.status(404).json({ message: "Paciente não encontrado." });
+      }
+      
+    const checkConflict = await prisma.appointment.findFirst({
+        where: {
+          psychologist_id: parseInt(psychologist_id),
+          date: new Date(date),
+          NOT: {
+            id: parseInt(id)
+          }
+        }
+      });
+
+      if (checkConflict) {
+        return response.status(400).json({
+          message: "Não foi possível alterar: O novo horário entra em conflito com outra consulta do psicólogo."
+        });
+      }
+
       const appointment = await prisma.appointment.update({
         where: {
           id: parseInt(id),
@@ -153,7 +213,7 @@ async getByPatient(request, response) {
   }
 
   async delete(request, response) {
-    const { id } = request.body;
+    const { id } = request.params;
 
     try {
       const appointment = await prisma.appointment.delete({

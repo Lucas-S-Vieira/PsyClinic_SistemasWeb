@@ -1,45 +1,53 @@
-# **CSI606-2025-02 - Remoto - Proposta de Trabalho Final**
+# **CSI606-2025-02 - Remoto - Trabalho Final - Resultados**
 
 ## *Discente: Lucas Salgado Vieira*
 
 ### Resumo
 
-  O trabalho consiste no desenvolvimento de um Sistema Web para o gerenciamento de uma pequena clínica de psicologia. O sistema visa informatizar o processo de agendamento de consultas, substituindo métodos manuais. O foco principal é organizar o cadastro de profissionais e pacientes, além de gerir a agenda de atendimentos, garantindo a integridade dos horários e evitando conflitos de agenda.
+O **PsyClinic** é um sistema web desenvolvido para simplificar o gerenciamento administrativo de uma clínica de psicologia. O foco central da aplicação é a organização de cadastros de profissionais e pacientes, permitindo o agendamento de consultas de forma intuitiva e integrada, eliminando a necessidade de controles manuais e garantindo a integridade dos dados através de um banco de dados relacional.
 
-### 1. Tema
+### 1. Funcionalidades implementadas
 
-  Sistema de Gerenciamento de Agendamentos para Clínica Psicológica.
+* **Gerenciamento de Psicólogos**: CRUD completo (Criação, Listagem, Atualização e Exclusão) de profissionais.
+* **Gerenciamento de Pacientes**: CRUD completo para manutenção dos dados dos pacientes atendidos pela clínica.
+* **Agendamento de Consultas**: Sistema de marcação que vincula um paciente a um psicólogo em data e hora específicas, utilizando interfaces tipadas para garantir a consistência.
 
-### 2. Escopo
+### 2. Funcionalidades previstas e não implementadas
 
-  Este projeto terá as seguintes funcionalidades principais:
+* **Campos Detalhados**: Dados como CRP, especialidade e data de nascimento foram simplificados para focar na estrutura funcional do CRUD e na estabilidade das rotas de API.
 
-  * **Gerenciamento de Psicólogos:** Cadastro, visualização, edição e remoção de profissionais (CRUD), incluindo dados como nome, CRP (registro profissional) e especialidade.
-  * **Gerenciamento de Pacientes:** Cadastro e manutenção dos dados dos pacientes (nome, contato, data de nascimento).
-  * **Agendamento de Consultas:** Funcionalidade para marcar consultas vinculando um paciente a um psicólogo em uma data e hora específicas.
-  * **Validação de Conflitos:** O sistema verificará automaticamente a disponibilidade do psicólogo. Caso já exista uma consulta marcada para aquele profissional no horário solicitado, o sistema impedirá o novo agendamento.
-  * **Listagem de Agenda:** Visualização das consultas agendadas (diária ou semanal).
+### 3. Outras funcionalidades implementadas
 
-### 3. Restrições
+* **Exclusão em Cascata (Cascade Delete)**: Configuração no banco de dados via Prisma para que, ao excluir um psicólogo ou paciente, suas respectivas consultas sejam removidas automaticamente, mantendo a integridade referencial.
+* **Identidade Visual e Favicon**: Implementação de um ícone personalizado para a aplicação e integração de logo clicável no menu para retorno à página inicial.
+* **Botão de agendar dentro do card**: Implementação de agenda de consultas diretamente do psicólogo ou do paciente.
 
-  Neste trabalho não serão considerados:
+### 4. Principais desafios e dificuldades
 
-  * **Processamento de Pagamentos:** O sistema não lidará com transações financeiras, cartões de crédito ou emissão de notas fiscais.
-  * **Prontuário Eletrônico Detalhado:** Não haverá armazenamento de histórico clínico detalhado ou anotações de sessões (foco apenas no agendamento administrativo).
-  * **Telemedicina:** O sistema não terá integração com plataformas de vídeo para consultas online.
-  * **Múltiplos Perfis de Acesso:** Inicialmente, o sistema terá apenas um perfil de administrador geral, sem distinção de login entre paciente e psicólogo.
+* **Definição do schema prisma**: Creio que a parte que mais tive dificuldades foi a definição do schema, por falta de experiência mesmo e creio que foi feito durante algumas aulas que faltei.
+* **Definição de qual seria a aparência do sistema**: Foi uma decisão bem difícil, até mesmo pelo grande número de possibilidades, decidir qual seria a "cara" do sistema.
+* **Utilização do TypeScript**: eu já estou acostumado com o js, mas ter que utilizar o ts foi um leve desafio, visto que possui pequenas diferenças.
 
-### 4. Protótipo
+### 5. Instruções para instalação e execução
 
-  Protótipos para as páginas principais foram elaborados, incluindo:
-  1.  Tela de Login/Home.
-  2.  Formulário de Cadastro de Psicólogos e Pacientes.
-  3.  Tela de Agendamento (com seleção de data/hora).
-  4.  Visualização da Lista de Consultas.
+1. **Backend**:
+* Navegar até a pasta do servidor.
+* Executar `npm install` para instalar as dependências (Express, Prisma, CORS).
+* Configurar o banco de dados no arquivo `.env` seguindo o "Example.env".
+* Executar `npm run migrate` para criar as tabelas e regras de cascata.
+* Iniciar com `npm run dev` para executar com nodemon.
+* Iniciar com `npm start` para executar normalmente sem nodemon.
 
-  Os desenhos das telas podem ser encontrados em: [FIGMA](https://www.figma.com/files/team/1303100830464857999/project/118516411/Team-project?fuid=918628922032204296)
-[Tela de login](https://www.figma.com/make/bbaI6g6S3pZuB7ULoPGVjl/Tela-de-Login?t=610Q6GZ080OvZJ7O-20&fullscreen=1)
-[Cadastro de paciente](https://www.figma.com/make/HDCjN6pLqgKIfzUg2SEeSM/UI-para-novo-paciente?t=7psS4XNXTmSnBefl-20&fullscreen=1)
-[Cadastro de psicologo](https://www.figma.com/make/K0UrAkqtEuNqE3PPPTM03M/Cadastro-de-novo-psicologo?t=0wxxZXbDv5li1s5U-20&fullscreen=1)
-[Agendamento de sessão](https://www.figma.com/make/cDPV7QUjxBbJhVsftJzkpi/Tela-de-agendamento?node-id=0-1&p=f&t=HINUnW6WEJr4EUGK-0&fullscreen=1)
-[Visualização de agenda](https://www.figma.com/make/4ZRhVWNSZDvxfZd7dbfUoW/Visualiza%C3%A7%C3%A3o-de-agendamentos?t=YKl4gK9NAINoVpuk-20&fullscreen=1)
+
+2. **Frontend**:
+* Navegar até a pasta do frontend.
+* Executar `npm install`.
+* Iniciar a aplicação com `npm run dev`.
+
+
+
+### 6. Referências
+
+* Documentação do React Router: [https://reactrouter.com/](https://reactrouter.com/)
+* Documentação do Prisma ORM: [https://www.prisma.io/docs/](https://www.prisma.io/docs/)
+* Repositório de Ícones Lucide: [https://lucide.dev/](https://lucide.dev/)

@@ -7,13 +7,18 @@
 import { prisma } from "../repository/client.js";
 
 export default class PsychologistController {
-  async getAll(request, response) {
+async getAll(request, response) {
     const psychologists = await prisma.psychologist.findMany({
       include: {
         appointments: {
             include: {
                 patient: true
             }
+        },
+        _count: { 
+            select: { 
+                appointments: true 
+            } 
         }
       },
     });
@@ -89,7 +94,8 @@ export default class PsychologistController {
   }
 
   async update(request, response) {
-    const { id, name } = request.body;
+    const { id } = request.params;
+    const { name } = request.body;
 
     try {
       const psychologist = await prisma.psychologist.update({
@@ -113,7 +119,7 @@ export default class PsychologistController {
   }
 
   async delete(request, response) {
-    const { id } = request.body;
+    const { id } = request.params;
 
     try {
       const psychologist = await prisma.psychologist.delete({

@@ -40,11 +40,11 @@ model Appointment{
 
   // Paciente
   patient_id Int
-  patient Patient @relation(fields: [patient_id], references: [id])
+  patient Patient @relation(fields: [patient_id], references: [id], onDelete: Cascade)
 
   // Psicologo
   psychologist_id Int
-  psychologist Psychologist @relation(fields: [psychologist_id], references: [id])
+  psychologist Psychologist @relation(fields: [psychologist_id], references: [id], onDelete: Cascade)
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt

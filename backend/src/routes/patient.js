@@ -11,7 +11,7 @@ patientsRouter.get('/name/:name', (request, response) => patientController.getBy
 
 // Rotas de Escrita (POST, PUT, DELETE)
 patientsRouter.post('/', (request, response) => patientController.create(request, response));
-patientsRouter.put('/', (request, response) => patientController.update(request, response));
-patientsRouter.delete('/', (request, response) => patientController.delete(request, response));
+patientsRouter.put('/:id', (request, response) => patientController.update(request, response));
+patientsRouter.delete('/:id', (request, response) => patientController.delete(request, response));
 
 export { patientsRouter };
