@@ -1,4 +1,4 @@
-# **CSI606-2025-02 - Trabalho Final**
+# **CSI606-2025-02 - Remoto - Trabalho Final - Resultados**
 
 ## *Discente: Lucas Salgado Vieira*
 
